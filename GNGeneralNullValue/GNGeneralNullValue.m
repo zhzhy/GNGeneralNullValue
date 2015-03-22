@@ -1,25 +1,25 @@
 //
-//  TTNullValue.m
+//  GNGeneralNullValue.m
 //  TTPod
 //
 //  Created by chaoyang.zhang on 15/1/17.
 //
 //
 
-#import "TTNullValue.h"
+#import "GNGeneralNullValue.h"
 
 #import <objc/runtime.h>
 
-@implementation TTNullValue
+@implementation GNGeneralNullValue
 
-+ (id)nullValue {
-    return [[[TTNullValue alloc] init] autorelease];
++ (id)generalNullValue {
+    return [[GNGeneralNullValue alloc] init];
 }
 
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    return [[TTNullValue alloc] init];
+    return [[GNGeneralNullValue alloc] init];
 }
 
 #pragma mark NSCoding
@@ -94,9 +94,8 @@
 }
 
 + (NSMethodSignature *)instanceMethodSignatureForSelector:(SEL)aSelector {
-    TTNullValue *nullValue = [[TTNullValue alloc] init];
+    GNGeneralNullValue *nullValue = [[GNGeneralNullValue alloc] init];
     NSMethodSignature *signature = [nullValue methodSignatureForSelector:aSelector];
-    [nullValue release];
     
     return signature;
 }
@@ -142,7 +141,7 @@
 }
 
 - (BOOL)isEqual:(id)object {
-    if ([object isKindOfClass:[TTNullValue class]]) {
+    if ([object isKindOfClass:[GNGeneralNullValue class]]) {
         return YES;
     }
     

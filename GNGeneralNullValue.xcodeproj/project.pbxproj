@@ -14,6 +14,8 @@
 		1F8FA1A81ABE97A600D4F1C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8FA1A71ABE97A600D4F1C3 /* Images.xcassets */; };
 		1F8FA1AB1ABE97A600D4F1C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8FA1A91ABE97A600D4F1C3 /* LaunchScreen.xib */; };
 		1F8FA1B71ABE97A600D4F1C3 /* GNGeneralNullValueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1B61ABE97A600D4F1C3 /* GNGeneralNullValueTests.m */; };
+		1F8FA1C21ABE982500D4F1C3 /* GNGeneralNullValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1C11ABE982500D4F1C3 /* GNGeneralNullValue.m */; };
+		1F8FA1C51ABE9A3300D4F1C3 /* NSString+StringValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1C41ABE9A3300D4F1C3 /* NSString+StringValue.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,10 @@
 		1F8FA1B01ABE97A600D4F1C3 /* GNGeneralNullValueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GNGeneralNullValueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8FA1B51ABE97A600D4F1C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F8FA1B61ABE97A600D4F1C3 /* GNGeneralNullValueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNGeneralNullValueTests.m; sourceTree = "<group>"; };
+		1F8FA1C01ABE982500D4F1C3 /* GNGeneralNullValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNGeneralNullValue.h; sourceTree = "<group>"; };
+		1F8FA1C11ABE982500D4F1C3 /* GNGeneralNullValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNGeneralNullValue.m; sourceTree = "<group>"; };
+		1F8FA1C31ABE9A3300D4F1C3 /* NSString+StringValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringValue.h"; sourceTree = "<group>"; };
+		1F8FA1C41ABE9A3300D4F1C3 /* NSString+StringValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringValue.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +87,10 @@
 		1F8FA1991ABE97A600D4F1C3 /* GNGeneralNullValue */ = {
 			isa = PBXGroup;
 			children = (
+				1F8FA1C31ABE9A3300D4F1C3 /* NSString+StringValue.h */,
+				1F8FA1C41ABE9A3300D4F1C3 /* NSString+StringValue.m */,
+				1F8FA1C01ABE982500D4F1C3 /* GNGeneralNullValue.h */,
+				1F8FA1C11ABE982500D4F1C3 /* GNGeneralNullValue.m */,
 				1F8FA19E1ABE97A600D4F1C3 /* AppDelegate.h */,
 				1F8FA19F1ABE97A600D4F1C3 /* AppDelegate.m */,
 				1F8FA1A11ABE97A600D4F1C3 /* ViewController.h */,
@@ -219,7 +229,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F8FA1C21ABE982500D4F1C3 /* GNGeneralNullValue.m in Sources */,
 				1F8FA1A31ABE97A600D4F1C3 /* ViewController.m in Sources */,
+				1F8FA1C51ABE9A3300D4F1C3 /* NSString+StringValue.m in Sources */,
 				1F8FA1A01ABE97A600D4F1C3 /* AppDelegate.m in Sources */,
 				1F8FA19D1ABE97A600D4F1C3 /* main.m in Sources */,
 			);
@@ -297,7 +309,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -332,7 +344,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

@@ -1,5 +1,5 @@
 //
-//  TTNullValue.h
+//  GNGeneralNullValue.h
 //  TTPod
 //
 //  Created by chaoyang.zhang on 15/1/17.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TTNullValue : NSObject<NSCopying, NSCoding>
+@interface GNGeneralNullValue : NSObject<NSCopying, NSCoding>
 
-+ (instancetype)nullValue;
++ (instancetype)generalNullValue;
 
 @end

@@ -10,4 +10,8 @@
 
 @implementation NSString (StringValue)
 
+- (NSString *)stringValue {
+    return self;
+}
+
 @end

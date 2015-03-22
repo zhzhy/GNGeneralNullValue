@@ -10,4 +10,6 @@
 
 @interface NSString (StringValue)
 
+- (NSString *)stringValue;
+
 @end
