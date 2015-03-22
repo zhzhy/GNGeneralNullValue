@@ -1,1 +1,5 @@
 # GNGeneralNullValue
+
+  Believe we all are confused with the NSNull class, because of nil can't saved in container, such as NSArray, NSDictionary and so on. Then Cocoa Touch Framework give us NSNull, which respresent nil in container. So we need filter NSNull when such as NSArray or NSDictionary is used.
+  
+  Then I design GNGeneralNullValue which replace NSNull, which can be act as NSNumber or NSString, which are basic Objective-C object. The GNGeneralNullValue object act as NSNumber or NSString is determined by the method sent to GNGeneralNullValue object, when **intValue** sent to a GNGeneralNullValue object it will act as a NSNumber object, while **length** sent to a GNGeneralNullValue object it will act as a NSString object. So where need a NSNull object just replaced With a GNGeneralNullValue object.
