@@ -10,16 +10,31 @@
 
 #import <objc/runtime.h>
 
+static GNGeneralNullValue *SingletonNullValue = nil;
+
 @implementation GNGeneralNullValue
 
++ (void)load {
+    Method nullMethod = class_getClassMethod([NSNull class], @selector(null));
+    Method generalNullMethod = class_getClassMethod(self, @selector(generalNullValue));
+    if (nullMethod != nil && generalNullMethod != nil) {
+        method_exchangeImplementations(nullMethod, generalNullMethod);
+    }
+}
+
 + (id)generalNullValue {
-    return [[GNGeneralNullValue alloc] init];
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        SingletonNullValue = [[GNGeneralNullValue alloc] init];
+    });
+    
+    return SingletonNullValue;
 }
 
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    return [[GNGeneralNullValue alloc] init];
+    return SingletonNullValue;
 }
 
 #pragma mark NSCoding
@@ -141,6 +156,10 @@
 }
 
 - (BOOL)isEqual:(id)object {
+    if (self == object) {
+        return YES;
+    }
+    
     if ([object isKindOfClass:[GNGeneralNullValue class]]) {
         return YES;
     }
