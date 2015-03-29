@@ -18,7 +18,7 @@ static GNGeneralNullValue *SingletonNullValue = nil;
     Method nullMethod = class_getClassMethod([NSNull class], @selector(null));
     Method generalNullMethod = class_getClassMethod(self, @selector(generalNullValue));
     if (nullMethod != nil && generalNullMethod != nil) {
-        method_exchangeImplementations(nullMethod, generalNullMethod);
+        method_setImplementation(nullMethod, method_getImplementation(generalNullMethod));
     }
 }
 

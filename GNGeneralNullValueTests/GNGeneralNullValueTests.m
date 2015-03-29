@@ -93,5 +93,8 @@
     XCTAssertEqual(NO, [string boolValue]);
 }
 
+- (void)test_NSNull_ShouldReturnGNGeneralNullValue {
+    XCTAssertTrue([[NSNull null] isKindOfClass:[GNGeneralNullValue class]]);
+}
 
 @end
