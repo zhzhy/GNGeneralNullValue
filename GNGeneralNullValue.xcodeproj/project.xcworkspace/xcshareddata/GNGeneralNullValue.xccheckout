@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>DA9F5FAF-5A79-4C13-86F4-CDBB13D8963A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>GNGeneralNullValue</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CF27347448C755504EF87430F4695EB678DE3B68</key>
+		<string>github.com:zhzhy/GNGeneralNullValue.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>GNGeneralNullValue.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CF27347448C755504EF87430F4695EB678DE3B68</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>github.com:zhzhy/GNGeneralNullValue.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CF27347448C755504EF87430F4695EB678DE3B68</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF27347448C755504EF87430F4695EB678DE3B68</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GNGeneralNullValue</string>
+		</dict>
+	</array>
+</dict>
+</plist>

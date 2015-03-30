@@ -7,12 +7,25 @@
 //
 
 #import "GNGeneralNullValue.h"
+#import "GNDefaultObject.h"
 
 #import <objc/runtime.h>
 
 static GNGeneralNullValue *SingletonNullValue = nil;
+static NSMutableArray *PoseAsObjects = nil;
 
 @implementation GNGeneralNullValue
+
++ (void)initialize {
+    if (self == [GNGeneralNullValue class]) {
+        PoseAsObjects = [NSMutableArray array];
+        [PoseAsObjects addObject:[GNDefaultObject GNDefaultObjectWithClass:[NSString class]
+                                                                withObject:@""]];
+        [PoseAsObjects addObject:[GNDefaultObject GNDefaultObjectWithClass:[NSNumber class]
+                                                                withObject:@0]];
+        
+    }
+}
 
 + (void)load {
     Method nullMethod = class_getClassMethod([NSNull class], @selector(null));
@@ -31,6 +44,15 @@ static GNGeneralNullValue *SingletonNullValue = nil;
     return SingletonNullValue;
 }
 
++ (void)registerClass:(Class)classObject withDefaultObject:(id)object {
+    if (classObject != nil) {
+        [PoseAsObjects addObject:[GNDefaultObject GNDefaultObjectWithClass:classObject
+                                                                withObject:object]];
+    }else {
+        [NSException raise:@"InvalidArgumentException" format:@"Classname can't be Null!"];
+    }
+}
+
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
@@ -47,30 +69,39 @@ static GNGeneralNullValue *SingletonNullValue = nil;
     return [self init];
 }
 
+#pragma mark ClassObject
+
++ (NSArray *)classObjects {
+    return [PoseAsObjects valueForKey:@"classObject"];
+}
+
++ (NSArray *)defaultObjects {
+    return [PoseAsObjects valueForKey:@"defaultObject"];
+}
+
 #pragma mark forwarding
 
 + (BOOL)instancesRespondToSelector:(SEL)aSelector {
     BOOL isResponding = NO;
-    if ([NSString instancesRespondToSelector:aSelector]) {
-        isResponding = YES;
-    }else if ([NSNumber instancesRespondToSelector:aSelector]) {
-        isResponding = YES;
-    }else if ([super instancesRespondToSelector:aSelector]) {
-        isResponding = YES;
+    NSArray *classObjects = [self classObjects];
+    for (Class classObject in classObjects) {
+        isResponding = [classObject instancesRespondToSelector:aSelector];
+        if (isResponding) {
+            break;
+        }
     }
     
     return isResponding;
-    
 }
 
 + (BOOL)conformsToProtocol:(Protocol *)protocol {
     BOOL isConforming = NO;
-    if ([NSString conformsToProtocol:protocol]) {
-        isConforming = YES;
-    }else if ([NSNumber conformsToProtocol:protocol]) {
-        isConforming = YES;
-    }else if ([super conformsToProtocol:protocol]) {
-        isConforming = YES;
+    NSArray *classObjects = [self classObjects];
+    for (Class classObject in classObjects) {
+        isConforming = [classObject conformsToProtocol:protocol];
+        if (isConforming) {
+            break;
+        }
     }
     
     return isConforming;
@@ -93,13 +124,14 @@ static GNGeneralNullValue *SingletonNullValue = nil;
 }
 
 - (id)objectRespondToSelector:(SEL)aSelector {
-    if ([NSString instancesRespondToSelector:aSelector]) {
-        return @"";
-    }else if ([NSNumber instancesRespondToSelector:aSelector]) {
-        return @0;
-    }else {
-        return nil;
+    NSArray *defaultObjects = [[self class] defaultObjects];
+    for (id defaultObject in defaultObjects) {
+        if ([defaultObject respondsToSelector:aSelector]) {
+            return defaultObject;
+        }
     }
+    
+    return nil;
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
@@ -109,36 +141,33 @@ static GNGeneralNullValue *SingletonNullValue = nil;
 }
 
 + (NSMethodSignature *)instanceMethodSignatureForSelector:(SEL)aSelector {
-    GNGeneralNullValue *nullValue = [[GNGeneralNullValue alloc] init];
-    NSMethodSignature *signature = [nullValue methodSignatureForSelector:aSelector];
-    
-    return signature;
+    return [[self generalNullValue] methodSignatureForSelector:aSelector];
 }
 
 - (BOOL)isKindOfClass:(Class)aClass {
     BOOL isKind = NO;
-    if ([NSString isSubclassOfClass:aClass]) {
-        isKind = YES;
-    }else if ([NSNumber isSubclassOfClass:aClass]) {
-        isKind = YES;
-    }else {
-        isKind = [[self class] isSubclassOfClass:aClass];
+    NSArray *classObjects = [[self class] classObjects];
+    for (Class classObject in classObjects) {
+        isKind = [classObject isSubclassOfClass:aClass];
+        if (isKind) {
+            break;
+        }
     }
     
-    return isKind;
+    return isKind || [[self class] isSubclassOfClass:aClass];
 }
 
 - (BOOL)isMemberOfClass:(Class)aClass {
     BOOL isMember = NO;
-    if ([NSString isSubclassOfClass:aClass]) {
-        isMember = YES;
-    }else if ([NSNumber isSubclassOfClass:aClass]) {
-        isMember = YES;
-    }else {
-        isMember = [self class] == aClass;
+    NSArray *classObjects = [[self class] classObjects];
+    for (Class classObject in classObjects) {
+        isMember = classObject == aClass;
+        if (isMember) {
+            break;
+        }
     }
     
-    return isMember;
+    return isMember || self == aClass;
 }
 
 - (BOOL)conformsToProtocol:(Protocol *)aProtocol {
