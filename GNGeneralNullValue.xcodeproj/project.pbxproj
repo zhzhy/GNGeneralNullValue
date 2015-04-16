@@ -17,6 +17,7 @@
 		1F8FA1C21ABE982500D4F1C3 /* GNGeneralNullValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1C11ABE982500D4F1C3 /* GNGeneralNullValue.m */; };
 		1F8FA1C51ABE9A3300D4F1C3 /* NSString+StringValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1C41ABE9A3300D4F1C3 /* NSString+StringValue.m */; };
 		1F8FA1C81AC857FA00D4F1C3 /* GNDefaultObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1C71AC857FA00D4F1C3 /* GNDefaultObject.m */; };
+		1F8FA20A1AE010C500D4F1C3 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA2091AE010C500D4F1C3 /* TestModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,8 @@
 		1F8FA1C41ABE9A3300D4F1C3 /* NSString+StringValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringValue.m"; sourceTree = "<group>"; };
 		1F8FA1C61AC857FA00D4F1C3 /* GNDefaultObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNDefaultObject.h; sourceTree = "<group>"; };
 		1F8FA1C71AC857FA00D4F1C3 /* GNDefaultObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNDefaultObject.m; sourceTree = "<group>"; };
+		1F8FA2081AE010C500D4F1C3 /* TestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
+		1F8FA2091AE010C500D4F1C3 /* TestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +103,8 @@
 				1F8FA19F1ABE97A600D4F1C3 /* AppDelegate.m */,
 				1F8FA1A11ABE97A600D4F1C3 /* ViewController.h */,
 				1F8FA1A21ABE97A600D4F1C3 /* ViewController.m */,
+				1F8FA2081AE010C500D4F1C3 /* TestModel.h */,
+				1F8FA2091AE010C500D4F1C3 /* TestModel.m */,
 				1F8FA1A41ABE97A600D4F1C3 /* Main.storyboard */,
 				1F8FA1A71ABE97A600D4F1C3 /* Images.xcassets */,
 				1F8FA1A91ABE97A600D4F1C3 /* LaunchScreen.xib */,
@@ -239,6 +244,7 @@
 				1F8FA1C51ABE9A3300D4F1C3 /* NSString+StringValue.m in Sources */,
 				1F8FA1A01ABE97A600D4F1C3 /* AppDelegate.m in Sources */,
 				1F8FA1C81AC857FA00D4F1C3 /* GNDefaultObject.m in Sources */,
+				1F8FA20A1AE010C500D4F1C3 /* TestModel.m in Sources */,
 				1F8FA19D1ABE97A600D4F1C3 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

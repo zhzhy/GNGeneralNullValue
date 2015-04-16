@@ -7,8 +7,7 @@
 //
 
 #import "ViewController.h"
-
-#import <MediaPlayer/MediaPlayer.h>
+#import "TestModel.h"
 
 @interface ViewController ()
 
@@ -19,6 +18,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    
+    UIButton *fixCrashbutton = [UIButton buttonWithType:UIButtonTypeCustom];
+    fixCrashbutton.frame = (CGRect){CGPointZero, {100, 100}};
+    fixCrashbutton.backgroundColor = [UIColor lightGrayColor];
+    [fixCrashbutton setTitle:@"Fix Crash" forState:UIControlStateNormal];
+    [fixCrashbutton addTarget:self action:@selector(fixCrash:) forControlEvents:UIControlEventTouchUpInside];
+    fixCrashbutton.center= self.view.center;
+    [self.view addSubview:fixCrashbutton];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,11 +35,11 @@
 
 - (IBAction)fixCrash:(UIButton *)sender {
     NSArray *titles = [[self mediaItems] valueForKey:@"title"];
-    NSLog(@"title:%@", titles);
+    NSLog(@"title:%d-%d", [[titles firstObject] integerValue], [[titles lastObject] integerValue]);
 }
 
 - (NSArray *)mediaItems {
-    return @[[[MPMediaItem alloc] init], [[MPMediaItem alloc] init]];
+    return @[[[TestModel alloc] init], [[TestModel alloc] init]];
 }
 
 @end
