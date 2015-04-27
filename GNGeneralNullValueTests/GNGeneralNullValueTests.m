@@ -99,4 +99,8 @@
     XCTAssertTrue([[NSNull null] isKindOfClass:[GNGeneralNullValue class]]);
 }
 
+- (void)test_GNGeneralNullValue_generalNullValue_isNSNull {
+    XCTAssertTrue([[GNGeneralNullValue generalNullValue] isKindOfClass:[NSNull class]]);
+}
+
 @end

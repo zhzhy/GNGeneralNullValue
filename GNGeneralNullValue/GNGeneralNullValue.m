@@ -149,7 +149,15 @@ static NSMutableArray *PoseAsObjects = nil;
     return [[self generalNullValue] methodSignatureForSelector:aSelector];
 }
 
+- (BOOL)isNSNull:(Class)aClass {
+    return aClass == [NSNull class] || aClass == [GNGeneralNullValue class];
+}
+
 - (BOOL)isKindOfClass:(Class)aClass {
+    if ([self isNSNull:aClass]) {
+        return YES;
+    }
+    
     BOOL isKind = NO;
     NSArray *classObjects = [[self class] classObjects];
     for (Class classObject in classObjects) {
@@ -163,6 +171,10 @@ static NSMutableArray *PoseAsObjects = nil;
 }
 
 - (BOOL)isMemberOfClass:(Class)aClass {
+    if ([self isNSNull:aClass]) {
+        return YES;
+    }
+    
     BOOL isMember = NO;
     NSArray *classObjects = [[self class] classObjects];
     for (Class classObject in classObjects) {
