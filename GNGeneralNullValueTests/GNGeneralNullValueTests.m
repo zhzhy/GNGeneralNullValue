@@ -60,12 +60,14 @@
 
 - (void)test_NSNumber_CGRectValue_shouldResponse {
     NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
-    XCTAssertTrue(CGPointEqualToPoint(CGPointZero, [number CGPointValue]));
+    CGPoint point = [number CGPointValue];
+    XCTAssertTrue(CGPointEqualToPoint(CGPointZero, point));
 }
 
 - (void)test_NSNumber_CGSizeValue_shouldResponse {
     NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
-    XCTAssertTrue(CGSizeEqualToSize(CGSizeMake(0.0f, 0.0f), [number CGSizeValue]));
+    CGSize size = [number CGSizeValue];
+    XCTAssertTrue(CGSizeEqualToSize(CGSizeMake(0.0f, 0.0f), size));
 }
 
 - (void)test_NSString_stringValue_shouldResponse {

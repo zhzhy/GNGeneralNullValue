@@ -119,8 +119,13 @@ static NSMutableArray *PoseAsObjects = nil;
     }
 }
 
-- (id)forwardingTargetForSelector:(SEL)aSelector {
-    return [self objectRespondToSelector:aSelector];
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    id target = [self objectRespondToSelector:anInvocation.selector];
+    if (target != nil) {
+        [anInvocation invokeWithTarget:target];
+    } else {
+        [super forwardInvocation:anInvocation];
+    }
 }
 
 - (id)objectRespondToSelector:(SEL)aSelector {
