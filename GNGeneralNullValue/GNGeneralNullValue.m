@@ -14,6 +14,8 @@
 static GNGeneralNullValue *SingletonNullValue = nil;
 static NSMutableArray *PoseAsObjects = nil;
 
+static BOOL isGNGeneralNullValueAsSuperClassOfNSNull = NO;
+
 @implementation GNGeneralNullValue
 
 + (void)initialize {
@@ -28,10 +30,23 @@ static NSMutableArray *PoseAsObjects = nil;
 }
 
 + (void)load {
-    Method nullMethod = class_getClassMethod([NSNull class], @selector(null));
-    Method generalNullMethod = class_getClassMethod(self, @selector(generalNullValue));
-    if (nullMethod != nil && generalNullMethod != nil) {
-        method_setImplementation(nullMethod, method_getImplementation(generalNullMethod));
+    Class childClass = [NSNull class];
+    NSInteger childClassSize = class_getInstanceSize(childClass);
+    NSInteger parentClassSize = class_getInstanceSize(self);
+    if (childClassSize - parentClassSize >= 0) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        
+        class_setSuperclass([NSNull class], self);
+        isGNGeneralNullValueAsSuperClassOfNSNull = YES;
+        
+#pragma clang diagnostic pop
+    } else {
+        Method nullMethod = class_getClassMethod([NSNull class], @selector(null));
+        Method generalNullMethod = class_getClassMethod(self, @selector(generalNullValue));
+        if (nullMethod != nil && generalNullMethod != nil) {
+            method_setImplementation(nullMethod, method_getImplementation(generalNullMethod));
+        }
     }
 }
 
@@ -154,7 +169,8 @@ static NSMutableArray *PoseAsObjects = nil;
 }
 
 - (BOOL)isKindOfClass:(Class)aClass {
-    if ([self isNSNull:aClass]) {
+    if (!isGNGeneralNullValueAsSuperClassOfNSNull &&
+        [self isNSNull:aClass]) {
         return YES;
     }
     
@@ -171,7 +187,8 @@ static NSMutableArray *PoseAsObjects = nil;
 }
 
 - (BOOL)isMemberOfClass:(Class)aClass {
-    if ([self isNSNull:aClass]) {
+    if (!isGNGeneralNullValueAsSuperClassOfNSNull &&
+        [self isNSNull:aClass]) {
         return YES;
     }
     
@@ -193,28 +210,6 @@ static NSMutableArray *PoseAsObjects = nil;
 
 - (BOOL)respondsToSelector:(SEL)aSelector {
     return [[self class] instancesRespondToSelector:aSelector];
-}
-
-#pragma mark hash
-
-- (NSUInteger)hash {
-    return 0;
-}
-
-- (BOOL)isEqual:(id)object {
-    if (self == object) {
-        return YES;
-    }
-    
-    if ([object isKindOfClass:[GNGeneralNullValue class]]) {
-        return YES;
-    }
-    
-    return NO;
-}
-
-- (NSString *)description {
-    return @"";
 }
 
 @end
