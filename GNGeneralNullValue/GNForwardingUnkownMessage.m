@@ -86,12 +86,7 @@ static NSMutableArray *PoseAsObjects = nil;
 }
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
-    id target = [[self class] objectRespondToSelector:anInvocation.selector];
-    if (target != nil) {
-        [anInvocation invokeWithTarget:target];
-    } else {
-        [super forwardInvocation:anInvocation];
-    }
+    [anInvocation invokeWithTarget:nil];
 }
 
 + (id)objectRespondToSelector:(SEL)aSelector {
