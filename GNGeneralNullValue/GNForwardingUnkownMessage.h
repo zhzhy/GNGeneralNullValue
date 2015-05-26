@@ -10,6 +10,6 @@
 
 @interface GNForwardingUnkownMessage : NSObject
 
-+ (void)registerClass:(Class)classObject withDefaultObject:(id)object;
++ (void)registerClass:(Class)classObject;
 
 @end

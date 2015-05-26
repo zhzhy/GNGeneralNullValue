@@ -13,8 +13,8 @@
 
 @implementation GNGeneralNull
 
-+ (void)registerClass:(Class)classObject withDefaultObject:(id)object {
-    [GNForwardingUnkownMessage registerClass:classObject withDefaultObject:object];
++ (void)registerClass:(Class)classObject {
+    [GNForwardingUnkownMessage registerClass:classObject];
 }
 
 @end

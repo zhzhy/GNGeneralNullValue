@@ -26,6 +26,8 @@
     [fixCrashbutton addTarget:self action:@selector(fixCrash:) forControlEvents:UIControlEventTouchUpInside];
     fixCrashbutton.center= self.view.center;
     [self.view addSubview:fixCrashbutton];
+    
+    [self fixCrash:nil];
 }
 
 - (void)didReceiveMemoryWarning {

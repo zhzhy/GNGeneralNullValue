@@ -26,10 +26,10 @@ static NSMutableArray *PoseAsObjects = nil;
     }
 }
 
-+ (void)registerClass:(Class)classObject withDefaultObject:(id)object {
++ (void)registerClass:(Class)classObject {
     if (classObject != nil) {
         [PoseAsObjects addObject:[GNDefaultObject GNDefaultObjectWithClass:classObject
-                                                                withObject:object]];
+                                                                withObject:[classObject new]]];
     }else {
         [NSException raise:@"InvalidArgumentException" format:@"Classname can't be Null!"];
     }
@@ -41,20 +41,12 @@ static NSMutableArray *PoseAsObjects = nil;
     return [PoseAsObjects valueForKey:@"classObject"];
 }
 
-+ (NSArray *)defaultObjects {
-    return [PoseAsObjects valueForKey:@"defaultObject"];
-}
-
 #pragma mark forwarding
 
 + (BOOL)instancesRespondToSelector:(SEL)aSelector {
     BOOL isResponding = NO;
-    NSArray *classObjects = [self classObjects];
-    for (Class classObject in classObjects) {
-        isResponding = [classObject instancesRespondToSelector:aSelector];
-        if (isResponding) {
-            break;
-        }
+    if ([self objectRespondToSelector:aSelector] != nil) {
+        isResponding = YES;
     }
     
     return isResponding;
@@ -90,10 +82,10 @@ static NSMutableArray *PoseAsObjects = nil;
 }
 
 + (id)objectRespondToSelector:(SEL)aSelector {
-    NSArray *defaultObjects = [self defaultObjects];
-    for (id defaultObject in defaultObjects) {
-        if ([defaultObject respondsToSelector:aSelector]) {
-            return defaultObject;
+    NSArray *defaultClasses = [self classObjects];
+    for (Class defaultClass in defaultClasses) {
+        if ([defaultClass instancesRespondToSelector:aSelector]) {
+            return defaultClass;
         }
     }
     
@@ -101,15 +93,12 @@ static NSMutableArray *PoseAsObjects = nil;
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
-    id object = [[self class] instanceMethodSignatureForSelector:aSelector];
-    
-    return [object methodSignatureForSelector:aSelector];
+    return [[self class] instanceMethodSignatureForSelector:aSelector];
 }
 
 + (NSMethodSignature *)instanceMethodSignatureForSelector:(SEL)aSelector {
-    return [self objectRespondToSelector:aSelector];
+    return [[self objectRespondToSelector:aSelector] instanceMethodSignatureForSelector:aSelector];
 }
-
 
 - (BOOL)isKindOfClass:(Class)aClass {
     BOOL isKind = NO;
