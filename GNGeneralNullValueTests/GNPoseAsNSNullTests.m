@@ -1,6 +1,6 @@
 //
-//  GNGeneralNullValueTests.m
-//  GNGeneralNullValueTests
+//  GNPoseAsNSNullTests.m
+//  GNPoseAsNSNullTests
 //
 //  Created by DjangoZhang on 15/3/22.
 //  Copyright (c) 2015年 DjangoZhang. All rights reserved.
@@ -9,14 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 
-#import "GNGeneralNullValue.h"
+#import "GNPoseAsNSNull.h"
 #import "NSString+StringValue.h"
 
-@interface GNGeneralNullValueTests : XCTestCase
+@interface GNPoseAsNSNullTests: XCTestCase
 
 @end
 
-@implementation GNGeneralNullValueTests
+@implementation GNPoseAsNSNullTests
 
 - (void)setUp {
     [super setUp];
@@ -29,74 +29,74 @@
 }
 
 - (void)test_NSNumber_integerValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
+    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(0, [number integerValue]);
 }
 
 - (void)test_NSNumber_intValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
+    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(0, [number intValue]);
 }
 
 - (void)test_NSNumber_charValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
+    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(0, [number charValue]);
 }
 
 - (void)test_NSNumber_floatValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
+    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(0.0f, [number floatValue]);
 }
 
 - (void)test_NSNumber_doubleValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
+    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(0.0, [number doubleValue]);
 }
 
 - (void)test_NSNumber_boolValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
+    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(NO, [number boolValue]);
 }
 
 - (void)test_NSNumber_CGRectValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
+    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
     CGPoint point = [number CGPointValue];
     XCTAssertTrue(CGPointEqualToPoint(CGPointZero, point));
 }
 
 - (void)test_NSNumber_CGSizeValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNGeneralNullValue generalNullValue];
+    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
     CGSize size = [number CGSizeValue];
     XCTAssertTrue(CGSizeEqualToSize(CGSizeMake(0.0f, 0.0f), size));
 }
 
 - (void)test_NSString_stringValue_shouldResponse {
-    NSString *string = (NSString *)[GNGeneralNullValue generalNullValue];
+    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
     XCTAssertEqualObjects(@"", [string stringValue]);
 }
 
 - (void)test_NSString_intValue_shouldResponse {
-    NSString *string = (NSString *)[GNGeneralNullValue generalNullValue];
+    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(0, [string intValue]);
 }
 
 - (void)test_NSString_floatValue_shouldResponse {
-    NSString *string = (NSString *)[GNGeneralNullValue generalNullValue];
+    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(0.0f, [string floatValue]);
 }
 
 - (void)test_NSString_doubleValue_shouldResponse {
-    NSString *string = (NSString *)[GNGeneralNullValue generalNullValue];
+    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(0.0, [string doubleValue]);
 }
 
 - (void)test_NSString_boolValue_shouldResponse {
-    NSString *string = (NSString *)[GNGeneralNullValue generalNullValue];
+    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
     XCTAssertEqual(NO, [string boolValue]);
 }
 
-- (void)test_NSNull_ShouldReturnGNGeneralNullValue {
-    XCTAssertTrue([[NSNull null] isKindOfClass:[GNGeneralNullValue class]]);
+- (void)test_NSNull_ShouldReturnGNPoseAsNSNull {
+    XCTAssertTrue([[NSNull null] isKindOfClass:[GNPoseAsNSNull class]]);
 }
 
 @end

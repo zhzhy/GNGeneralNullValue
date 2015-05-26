@@ -13,11 +13,13 @@
 		1F8FA1A61ABE97A600D4F1C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F8FA1A41ABE97A600D4F1C3 /* Main.storyboard */; };
 		1F8FA1A81ABE97A600D4F1C3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F8FA1A71ABE97A600D4F1C3 /* Images.xcassets */; };
 		1F8FA1AB1ABE97A600D4F1C3 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8FA1A91ABE97A600D4F1C3 /* LaunchScreen.xib */; };
-		1F8FA1B71ABE97A600D4F1C3 /* GNGeneralNullValueTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1B61ABE97A600D4F1C3 /* GNGeneralNullValueTests.m */; };
-		1F8FA1C21ABE982500D4F1C3 /* GNGeneralNullValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1C11ABE982500D4F1C3 /* GNGeneralNullValue.m */; };
+		1F8FA1B71ABE97A600D4F1C3 /* GNPoseAsNSNullTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1B61ABE97A600D4F1C3 /* GNPoseAsNSNullTests.m */; };
+		1F8FA1C21ABE982500D4F1C3 /* GNForwardingUnkownMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1C11ABE982500D4F1C3 /* GNForwardingUnkownMessage.m */; };
 		1F8FA1C51ABE9A3300D4F1C3 /* NSString+StringValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1C41ABE9A3300D4F1C3 /* NSString+StringValue.m */; };
 		1F8FA1C81AC857FA00D4F1C3 /* GNDefaultObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA1C71AC857FA00D4F1C3 /* GNDefaultObject.m */; };
 		1F8FA20A1AE010C500D4F1C3 /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8FA2091AE010C500D4F1C3 /* TestModel.m */; };
+		1FD27C331B14AD51006FBB40 /* GNPoseAsNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD27C321B14AD51006FBB40 /* GNPoseAsNSNull.m */; };
+		1FD27C361B14B313006FBB40 /* GNGeneralNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD27C351B14B313006FBB40 /* GNGeneralNull.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,15 +45,19 @@
 		1F8FA1AA1ABE97A600D4F1C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1F8FA1B01ABE97A600D4F1C3 /* GNGeneralNullValueTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GNGeneralNullValueTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8FA1B51ABE97A600D4F1C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F8FA1B61ABE97A600D4F1C3 /* GNGeneralNullValueTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNGeneralNullValueTests.m; sourceTree = "<group>"; };
-		1F8FA1C01ABE982500D4F1C3 /* GNGeneralNullValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNGeneralNullValue.h; sourceTree = "<group>"; };
-		1F8FA1C11ABE982500D4F1C3 /* GNGeneralNullValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNGeneralNullValue.m; sourceTree = "<group>"; };
+		1F8FA1B61ABE97A600D4F1C3 /* GNPoseAsNSNullTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GNPoseAsNSNullTests.m; sourceTree = "<group>"; };
+		1F8FA1C01ABE982500D4F1C3 /* GNForwardingUnkownMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNForwardingUnkownMessage.h; sourceTree = "<group>"; };
+		1F8FA1C11ABE982500D4F1C3 /* GNForwardingUnkownMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNForwardingUnkownMessage.m; sourceTree = "<group>"; };
 		1F8FA1C31ABE9A3300D4F1C3 /* NSString+StringValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+StringValue.h"; sourceTree = "<group>"; };
 		1F8FA1C41ABE9A3300D4F1C3 /* NSString+StringValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+StringValue.m"; sourceTree = "<group>"; };
 		1F8FA1C61AC857FA00D4F1C3 /* GNDefaultObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNDefaultObject.h; sourceTree = "<group>"; };
 		1F8FA1C71AC857FA00D4F1C3 /* GNDefaultObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNDefaultObject.m; sourceTree = "<group>"; };
 		1F8FA2081AE010C500D4F1C3 /* TestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
 		1F8FA2091AE010C500D4F1C3 /* TestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
+		1FD27C311B14AD51006FBB40 /* GNPoseAsNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNPoseAsNSNull.h; sourceTree = "<group>"; };
+		1FD27C321B14AD51006FBB40 /* GNPoseAsNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNPoseAsNSNull.m; sourceTree = "<group>"; };
+		1FD27C341B14B313006FBB40 /* GNGeneralNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNGeneralNull.h; sourceTree = "<group>"; };
+		1FD27C351B14B313006FBB40 /* GNGeneralNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNGeneralNull.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +103,12 @@
 				1F8FA1C41ABE9A3300D4F1C3 /* NSString+StringValue.m */,
 				1F8FA1C61AC857FA00D4F1C3 /* GNDefaultObject.h */,
 				1F8FA1C71AC857FA00D4F1C3 /* GNDefaultObject.m */,
-				1F8FA1C01ABE982500D4F1C3 /* GNGeneralNullValue.h */,
-				1F8FA1C11ABE982500D4F1C3 /* GNGeneralNullValue.m */,
+				1F8FA1C01ABE982500D4F1C3 /* GNForwardingUnkownMessage.h */,
+				1F8FA1C11ABE982500D4F1C3 /* GNForwardingUnkownMessage.m */,
+				1FD27C311B14AD51006FBB40 /* GNPoseAsNSNull.h */,
+				1FD27C321B14AD51006FBB40 /* GNPoseAsNSNull.m */,
+				1FD27C341B14B313006FBB40 /* GNGeneralNull.h */,
+				1FD27C351B14B313006FBB40 /* GNGeneralNull.m */,
 				1F8FA19E1ABE97A600D4F1C3 /* AppDelegate.h */,
 				1F8FA19F1ABE97A600D4F1C3 /* AppDelegate.m */,
 				1F8FA1A11ABE97A600D4F1C3 /* ViewController.h */,
@@ -125,7 +135,7 @@
 		1F8FA1B31ABE97A600D4F1C3 /* GNGeneralNullValueTests */ = {
 			isa = PBXGroup;
 			children = (
-				1F8FA1B61ABE97A600D4F1C3 /* GNGeneralNullValueTests.m */,
+				1F8FA1B61ABE97A600D4F1C3 /* GNPoseAsNSNullTests.m */,
 				1F8FA1B41ABE97A600D4F1C3 /* Supporting Files */,
 			);
 			path = GNGeneralNullValueTests;
@@ -239,13 +249,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F8FA1C21ABE982500D4F1C3 /* GNGeneralNullValue.m in Sources */,
+				1FD27C361B14B313006FBB40 /* GNGeneralNull.m in Sources */,
+				1F8FA1C21ABE982500D4F1C3 /* GNForwardingUnkownMessage.m in Sources */,
 				1F8FA1A31ABE97A600D4F1C3 /* ViewController.m in Sources */,
 				1F8FA1C51ABE9A3300D4F1C3 /* NSString+StringValue.m in Sources */,
 				1F8FA1A01ABE97A600D4F1C3 /* AppDelegate.m in Sources */,
 				1F8FA1C81AC857FA00D4F1C3 /* GNDefaultObject.m in Sources */,
 				1F8FA20A1AE010C500D4F1C3 /* TestModel.m in Sources */,
 				1F8FA19D1ABE97A600D4F1C3 /* main.m in Sources */,
+				1FD27C331B14AD51006FBB40 /* GNPoseAsNSNull.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,7 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F8FA1B71ABE97A600D4F1C3 /* GNGeneralNullValueTests.m in Sources */,
+				1F8FA1B71ABE97A600D4F1C3 /* GNPoseAsNSNullTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

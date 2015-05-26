@@ -1,25 +1,22 @@
 //
-//  GNGeneralNullValue.m
+//  GNForwardingUnkownMessage.m
 //  TTPod
 //
 //  Created by chaoyang.zhang on 15/1/17.
 //
 //
 
-#import "GNGeneralNullValue.h"
+#import "GNForwardingUnkownMessage.h"
 #import "GNDefaultObject.h"
 
 #import <objc/runtime.h>
 
-static GNGeneralNullValue *SingletonNullValue = nil;
 static NSMutableArray *PoseAsObjects = nil;
 
-static BOOL isGNGeneralNullValueAsSuperClassOfNSNull = NO;
-
-@implementation GNGeneralNullValue
+@implementation GNForwardingUnkownMessage
 
 + (void)initialize {
-    if (self == [GNGeneralNullValue class]) {
+    if (self == [GNForwardingUnkownMessage class]) {
         PoseAsObjects = [NSMutableArray array];
         [PoseAsObjects addObject:[GNDefaultObject GNDefaultObjectWithClass:[NSString class]
                                                                 withObject:@""]];
@@ -29,36 +26,6 @@ static BOOL isGNGeneralNullValueAsSuperClassOfNSNull = NO;
     }
 }
 
-+ (void)load {
-    Class childClass = [NSNull class];
-    NSInteger childClassSize = class_getInstanceSize(childClass);
-    NSInteger parentClassSize = class_getInstanceSize(self);
-    if (childClassSize - parentClassSize >= 0) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        
-        class_setSuperclass([NSNull class], self);
-        isGNGeneralNullValueAsSuperClassOfNSNull = YES;
-        
-#pragma clang diagnostic pop
-    } else {
-        Method nullMethod = class_getClassMethod([NSNull class], @selector(null));
-        Method generalNullMethod = class_getClassMethod(self, @selector(generalNullValue));
-        if (nullMethod != nil && generalNullMethod != nil) {
-            method_setImplementation(nullMethod, method_getImplementation(generalNullMethod));
-        }
-    }
-}
-
-+ (id)generalNullValue {
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        SingletonNullValue = [[GNGeneralNullValue alloc] init];
-    });
-    
-    return SingletonNullValue;
-}
-
 + (void)registerClass:(Class)classObject withDefaultObject:(id)object {
     if (classObject != nil) {
         [PoseAsObjects addObject:[GNDefaultObject GNDefaultObjectWithClass:classObject
@@ -66,22 +33,6 @@ static BOOL isGNGeneralNullValueAsSuperClassOfNSNull = NO;
     }else {
         [NSException raise:@"InvalidArgumentException" format:@"Classname can't be Null!"];
     }
-}
-
-#pragma mark NSCopying
-
-- (id)copyWithZone:(NSZone *)zone {
-    return SingletonNullValue;
-}
-
-#pragma mark NSCoding
-
-- (void)encodeWithCoder:(NSCoder *)aCoder {
-    
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder {
-    return [self init];
 }
 
 #pragma mark ClassObject
@@ -135,7 +86,7 @@ static BOOL isGNGeneralNullValueAsSuperClassOfNSNull = NO;
 }
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
-    id target = [self objectRespondToSelector:anInvocation.selector];
+    id target = [[self class] objectRespondToSelector:anInvocation.selector];
     if (target != nil) {
         [anInvocation invokeWithTarget:target];
     } else {
@@ -143,8 +94,8 @@ static BOOL isGNGeneralNullValueAsSuperClassOfNSNull = NO;
     }
 }
 
-- (id)objectRespondToSelector:(SEL)aSelector {
-    NSArray *defaultObjects = [[self class] defaultObjects];
++ (id)objectRespondToSelector:(SEL)aSelector {
+    NSArray *defaultObjects = [self defaultObjects];
     for (id defaultObject in defaultObjects) {
         if ([defaultObject respondsToSelector:aSelector]) {
             return defaultObject;
@@ -155,25 +106,17 @@ static BOOL isGNGeneralNullValueAsSuperClassOfNSNull = NO;
 }
 
 - (NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector {
-    id object = [self objectRespondToSelector:aSelector];
+    id object = [[self class] instanceMethodSignatureForSelector:aSelector];
     
     return [object methodSignatureForSelector:aSelector];
 }
 
 + (NSMethodSignature *)instanceMethodSignatureForSelector:(SEL)aSelector {
-    return [[self generalNullValue] methodSignatureForSelector:aSelector];
+    return [self objectRespondToSelector:aSelector];
 }
 
-- (BOOL)isNSNull:(Class)aClass {
-    return aClass == [NSNull class] || aClass == [GNGeneralNullValue class];
-}
 
 - (BOOL)isKindOfClass:(Class)aClass {
-    if (!isGNGeneralNullValueAsSuperClassOfNSNull &&
-        [self isNSNull:aClass]) {
-        return YES;
-    }
-    
     BOOL isKind = NO;
     NSArray *classObjects = [[self class] classObjects];
     for (Class classObject in classObjects) {
@@ -187,11 +130,6 @@ static BOOL isGNGeneralNullValueAsSuperClassOfNSNull = NO;
 }
 
 - (BOOL)isMemberOfClass:(Class)aClass {
-    if (!isGNGeneralNullValueAsSuperClassOfNSNull &&
-        [self isNSNull:aClass]) {
-        return YES;
-    }
-    
     BOOL isMember = NO;
     NSArray *classObjects = [[self class] classObjects];
     for (Class classObject in classObjects) {

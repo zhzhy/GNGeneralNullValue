@@ -1,9 +1,9 @@
 //
-//  GNGeneralNullValue.h
-//  TTPod
+//  GNGeneralNull.h
+//  GNGeneralNullValue
 //
-//  Created by chaoyang.zhang on 15/1/17.
-//
+//  Created by DjangoZhang on 15/5/26.
+//  Copyright (c) 2015年 DjangoZhang. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -11,9 +11,7 @@
 /**
  This class is not thread-safe, so you should invoke -[GNGeneralNullValue registerClass:withDefaultObject] when app load finished.
  */
-@interface GNGeneralNullValue : NSObject<NSCopying, NSCoding>
-
-+ (instancetype)generalNullValue;
+@interface GNGeneralNull : NSObject
 
 /**
  This method is not thread-safe, should be invoked at -[UIApplication application: didFinishLaunchingWithOptions:].
