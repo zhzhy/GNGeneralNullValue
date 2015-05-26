@@ -10,7 +10,6 @@
 #import <XCTest/XCTest.h>
 
 #import "GNPoseAsNSNull.h"
-#import "NSString+StringValue.h"
 
 @interface GNPoseAsNSNullTests: XCTestCase
 
@@ -70,9 +69,9 @@
     XCTAssertTrue(CGSizeEqualToSize(CGSizeMake(0.0f, 0.0f), size));
 }
 
-- (void)test_NSString_stringValue_shouldResponse {
-    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqualObjects(@"", [string stringValue]);
+- (void)test_NSNumber_stringValue_shouldResponse {
+    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
+    XCTAssertEqualObjects(nil, [number stringValue]);
 }
 
 - (void)test_NSString_intValue_shouldResponse {

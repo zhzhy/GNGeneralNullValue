@@ -7,7 +7,6 @@
 //
 
 #import "GNForwardingUnkownMessage.h"
-#import "GNDefaultObject.h"
 
 #import <objc/runtime.h>
 
@@ -18,18 +17,14 @@ static NSMutableArray *PoseAsObjects = nil;
 + (void)initialize {
     if (self == [GNForwardingUnkownMessage class]) {
         PoseAsObjects = [NSMutableArray array];
-        [PoseAsObjects addObject:[GNDefaultObject GNDefaultObjectWithClass:[NSString class]
-                                                                withObject:@""]];
-        [PoseAsObjects addObject:[GNDefaultObject GNDefaultObjectWithClass:[NSNumber class]
-                                                                withObject:@0]];
-        
+        [PoseAsObjects addObject:[NSString class]];
+        [PoseAsObjects addObject:[NSNumber class]];
     }
 }
 
 + (void)registerClass:(Class)classObject {
     if (classObject != nil) {
-        [PoseAsObjects addObject:[GNDefaultObject GNDefaultObjectWithClass:classObject
-                                                                withObject:[classObject new]]];
+        [PoseAsObjects addObject:classObject];
     }else {
         [NSException raise:@"InvalidArgumentException" format:@"Classname can't be Null!"];
     }
@@ -38,7 +33,7 @@ static NSMutableArray *PoseAsObjects = nil;
 #pragma mark ClassObject
 
 + (NSArray *)classObjects {
-    return [PoseAsObjects valueForKey:@"classObject"];
+    return PoseAsObjects;
 }
 
 #pragma mark forwarding
