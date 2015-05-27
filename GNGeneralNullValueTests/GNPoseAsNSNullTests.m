@@ -27,75 +27,31 @@
     [super tearDown];
 }
 
-- (void)test_NSNumber_integerValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(0, [number integerValue]);
+- (void)test_GNPoseAsNSNull_ShouldPoseAsNSNull {
+    XCTAssertTrue([GNPoseAsNSNull class] == [NSNull class]);
 }
 
-- (void)test_NSNumber_intValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(0, [number intValue]);
+- (void)test_GNPoseAsNSNull_instance_ShouldisMemberOfClass {
+    GNPoseAsNSNull *null = [GNPoseAsNSNull nullValue];
+    XCTAssertTrue([null isMemberOfClass:[NSNull class]]);
 }
 
-- (void)test_NSNumber_charValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(0, [number charValue]);
+- (void)test_GNPoseAsNSNull_instance_ShouldisKindOfClass {
+    GNPoseAsNSNull *null = [GNPoseAsNSNull nullValue];
+    XCTAssertTrue([null isKindOfClass:[NSNull class]]);
 }
 
-- (void)test_NSNumber_floatValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(0.0f, [number floatValue]);
+- (void)test_GNPoseAsNSNull_ShouldCopy {
+    GNPoseAsNSNull *null = [GNPoseAsNSNull nullValue];
+    GNPoseAsNSNull *copyNull = [null copy];
+    XCTAssertEqualObjects(null, copyNull);
 }
 
-- (void)test_NSNumber_doubleValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(0.0, [number doubleValue]);
-}
-
-- (void)test_NSNumber_boolValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(NO, [number boolValue]);
-}
-
-- (void)test_NSNumber_CGRectValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
-    CGPoint point = [number CGPointValue];
-    XCTAssertTrue(CGPointEqualToPoint(CGPointZero, point));
-}
-
-- (void)test_NSNumber_CGSizeValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
-    CGSize size = [number CGSizeValue];
-    XCTAssertTrue(CGSizeEqualToSize(CGSizeMake(0.0f, 0.0f), size));
-}
-
-- (void)test_NSNumber_stringValue_shouldResponse {
-    NSNumber *number = (NSNumber *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqualObjects(nil, [number stringValue]);
-}
-
-- (void)test_NSString_intValue_shouldResponse {
-    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(0, [string intValue]);
-}
-
-- (void)test_NSString_floatValue_shouldResponse {
-    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(0.0f, [string floatValue]);
-}
-
-- (void)test_NSString_doubleValue_shouldResponse {
-    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(0.0, [string doubleValue]);
-}
-
-- (void)test_NSString_boolValue_shouldResponse {
-    NSString *string = (NSString *)[GNPoseAsNSNull nullValue];
-    XCTAssertEqual(NO, [string boolValue]);
-}
-
-- (void)test_NSNull_ShouldReturnGNPoseAsNSNull {
-    XCTAssertTrue([[NSNull null] isKindOfClass:[GNPoseAsNSNull class]]);
+- (void)test_GNPoseAsNSNull_ShouldSerialization {
+    GNPoseAsNSNull *null = [GNPoseAsNSNull nullValue];
+    NSData *archivedNull = [NSKeyedArchiver archivedDataWithRootObject:null];
+    GNPoseAsNSNull *unarchivedNull = [NSKeyedUnarchiver unarchiveObjectWithData:archivedNull];
+    XCTAssertEqualObjects(null, unarchivedNull);
 }
 
 @end

@@ -32,7 +32,7 @@ static GNPoseAsNSNull *SingletonNullValue = nil;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
-    return [self init];
+    return [[self class] nullValue];
 }
 
 #pragma mark NSCopying
@@ -42,7 +42,7 @@ static GNPoseAsNSNull *SingletonNullValue = nil;
 }
 
 - (BOOL)isNSNull:(Class)aClass {
-    return aClass == [NSNull class] || aClass == [GNPoseAsNSNull class];
+    return aClass == [NSNull class];
 }
 
 - (BOOL)isKindOfClass:(Class)aClass {
@@ -50,7 +50,7 @@ static GNPoseAsNSNull *SingletonNullValue = nil;
 }
 
 - (BOOL)isMemberOfClass:(Class)aClass {
-    return [self isNSNull:aClass] || [super isMemberOfClass:aClass];
+    return [self isNSNull:aClass];
 }
 
 @end
