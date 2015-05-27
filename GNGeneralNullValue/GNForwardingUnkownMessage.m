@@ -1,6 +1,6 @@
 //
 //  GNForwardingUnkownMessage.m
-//  TTPod
+//  GNGeneralNullValue
 //
 //  Created by chaoyang.zhang on 15/1/17.
 //
@@ -38,40 +38,6 @@ static NSMutableArray *PoseAsObjects = nil;
 
 #pragma mark forwarding
 
-+ (BOOL)instancesRespondToSelector:(SEL)aSelector {
-    BOOL isResponding = NO;
-    if ([self objectRespondToSelector:aSelector] != nil) {
-        isResponding = YES;
-    }
-    
-    return isResponding;
-}
-
-+ (BOOL)conformsToProtocol:(Protocol *)protocol {
-    BOOL isConforming = NO;
-    NSArray *classObjects = [self classObjects];
-    for (Class classObject in classObjects) {
-        isConforming = [classObject conformsToProtocol:protocol];
-        if (isConforming) {
-            break;
-        }
-    }
-    
-    return isConforming;
-}
-
-- (IMP)methodForSelector:(SEL)aSelector {
-    return [[self class] instanceMethodForSelector:aSelector];
-}
-
-+ (IMP)instanceMethodForSelector:(SEL)aSelector {
-    if ([self instancesRespondToSelector:aSelector]) {
-        return class_getMethodImplementation(self, aSelector);
-    }else {
-        return [super instanceMethodForSelector:aSelector];
-    }
-}
-
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
     [anInvocation invokeWithTarget:nil];
 }
@@ -93,40 +59,6 @@ static NSMutableArray *PoseAsObjects = nil;
 
 + (NSMethodSignature *)instanceMethodSignatureForSelector:(SEL)aSelector {
     return [[self objectRespondToSelector:aSelector] instanceMethodSignatureForSelector:aSelector];
-}
-
-- (BOOL)isKindOfClass:(Class)aClass {
-    BOOL isKind = NO;
-    NSArray *classObjects = [[self class] classObjects];
-    for (Class classObject in classObjects) {
-        isKind = [classObject isSubclassOfClass:aClass];
-        if (isKind) {
-            break;
-        }
-    }
-    
-    return isKind || [[self class] isSubclassOfClass:aClass];
-}
-
-- (BOOL)isMemberOfClass:(Class)aClass {
-    BOOL isMember = NO;
-    NSArray *classObjects = [[self class] classObjects];
-    for (Class classObject in classObjects) {
-        isMember = classObject == aClass;
-        if (isMember) {
-            break;
-        }
-    }
-    
-    return isMember || self == aClass;
-}
-
-- (BOOL)conformsToProtocol:(Protocol *)aProtocol {
-    return [[self class] conformsToProtocol:aProtocol];
-}
-
-- (BOOL)respondsToSelector:(SEL)aSelector {
-    return [[self class] instancesRespondToSelector:aSelector];
 }
 
 @end

@@ -38,9 +38,8 @@ static GNPoseAsNSNull *SingletonNullValue = nil;
 #pragma mark NSCopying
 
 - (id)copyWithZone:(NSZone *)zone {
-    return self;
+    return SingletonNullValue;
 }
-
 
 - (BOOL)isNSNull:(Class)aClass {
     return aClass == [NSNull class] || aClass == [GNPoseAsNSNull class];
