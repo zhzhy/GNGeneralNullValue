@@ -18,6 +18,7 @@
 		1FD27C401B1592DA006FBB40 /* GNForwardingUnkownMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD27C3B1B1592DA006FBB40 /* GNForwardingUnkownMessage.m */; };
 		1FD27C411B1592DA006FBB40 /* GNGeneralNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD27C3D1B1592DA006FBB40 /* GNGeneralNull.m */; };
 		1FD27C421B1592DA006FBB40 /* GNPoseAsNSNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD27C3F1B1592DA006FBB40 /* GNPoseAsNSNull.m */; };
+		1FEBC65B1B16B8E70033F0AE /* GNForwardingUnkownMessageTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEBC65A1B16B8E70033F0AE /* GNForwardingUnkownMessageTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		1FD27C3D1B1592DA006FBB40 /* GNGeneralNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNGeneralNull.m; sourceTree = "<group>"; };
 		1FD27C3E1B1592DA006FBB40 /* GNPoseAsNSNull.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GNPoseAsNSNull.h; sourceTree = "<group>"; };
 		1FD27C3F1B1592DA006FBB40 /* GNPoseAsNSNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNPoseAsNSNull.m; sourceTree = "<group>"; };
+		1FEBC65A1B16B8E70033F0AE /* GNForwardingUnkownMessageTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GNForwardingUnkownMessageTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 		1F8FA1B31ABE97A600D4F1C3 /* GNGeneralNullValueTests */ = {
 			isa = PBXGroup;
 			children = (
+				1FEBC65A1B16B8E70033F0AE /* GNForwardingUnkownMessageTests.m */,
 				1F8FA1B61ABE97A600D4F1C3 /* GNPoseAsNSNullTests.m */,
 				1F8FA1B41ABE97A600D4F1C3 /* Supporting Files */,
 			);
@@ -262,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F8FA1B71ABE97A600D4F1C3 /* GNPoseAsNSNullTests.m in Sources */,
+				1FEBC65B1B16B8E70033F0AE /* GNForwardingUnkownMessageTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
