@@ -32,4 +32,8 @@
     XCTAssertEqual(0, [(NSString *)forwarding length]);
 }
 
+- (void)test_NSNull_superClass_shouldsetup {
+    XCTAssertEqual([GNForwardingUnkownMessage class], [(NSArray *)[NSNull null] superclass]);
+}
+
 @end

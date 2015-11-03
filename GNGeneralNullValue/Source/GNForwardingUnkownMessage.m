@@ -19,6 +19,9 @@ static NSMutableArray *PoseAsObjects = nil;
         PoseAsObjects = [NSMutableArray array];
         [PoseAsObjects addObject:[NSString class]];
         [PoseAsObjects addObject:[NSNumber class]];
+        [PoseAsObjects addObject:[NSArray class]];
+        [PoseAsObjects addObject:[NSDictionary class]];
+        [PoseAsObjects addObject:[NSSet class]];
     }
 }
 
